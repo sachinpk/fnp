@@ -1,0 +1,98 @@
+<html>
+<head></head>
+<body>
+<?php
+session_start();
+$message0="";
+$message1="";
+if(isset($_POST['finishbutton']))
+{
+$town=$_POST['town'];
+$spot=$_POST['spot'];
+$uname=$_POST['uname'];
+$password=$_POST['pass'];
+$avspace=$_POST['avspace'];
+$repeatPassword=$_POST['vpass'];
+include("project connection.php");
+foreach($_POST as $field => $value)
+{
+if($value=="")
+ {
+  $blankArray[$field]=$value;
+ }
+}
+if(@sizeof($blankArray)>0)
+{
+ $message0="* Please fill all the fields";
+}
+else if($password!=$repeatPassword)
+{
+ $message1="* Passwords doesn't mach";
+}
+if(@sizeof($blankArray)>0 and $password!=$repeatPassword)
+{
+$message0="* Please fill all the fields";
+$message1="* Passwords doesn't mach";
+}
+if($message0=="" and $message1=="")
+{
+ mysql_query("insert into register(username,password,email,type)values('".$_POST['uname']."','".$_POST['pass']."','".$_POST['uname']."@gmail.com','gm')");
+
+mysql_query("insert into gm(gmid,town,spot,total,parked,blocked,free) values ('$uname','$town','$spot','$avspace','0','0','$avspace')");
+
+header("Location:gmdet.php");
+}
+}
+
+?>
+
+<li><a href="../logout.php">Logout</a>|<a href="admin_home.php">Home</a></li>
+<h1><div align="center"><b>Add a Ground Master</b></div></h1>
+<form action="addgm.php" method="post"> 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table align="center">
+<tr><b>
+<?php
+echo $message0." ".$message1;					
+?>
+</b>
+</td>
+</tr>    
+</table>               
+<table align="center" cellpadding="8" cellspacing="8">
+<tr>
+<td><div align="center"><b>Town</b></div></td>
+<td><input type="text" name="town" /></td>
+</tr>
+<tr>
+<td><div align="center"><b>Spot</b></div></td>
+<td><input type="text" name="spot" /></td>
+</tr>
+<tr>
+<td><div align="center"><b>GM Username</b></div></td>
+<td><input type="text" name="uname" /></td>
+</tr>
+<tr>
+<td><div align="center"><b>Password</b></div></td>
+<td><input type="password" name="pass" /></td>
+</tr>
+<tr>
+<td><div align="center"><b>Varify Password</b></div></td>
+<td><input type="password" name="vpass" /></td>
+</tr>
+<tr>
+<td><div align="center"><b>Available Space</b></div></td>
+<td><input type="text" name="avspace" /></td>
+</tr>
+</table>
+<table align="center">
+<tr>
+<td><input type="submit" value="Enter" name="finishbutton"/></td>
+<td><input type="reset" value="Clear" name="reset"/></td>
+</tr>
+</table>
+</form>
+<li>&copy; 2012 FindNpark - All rights reserved.
+</body> 
+</html> 
