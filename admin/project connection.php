@@ -10,4 +10,7 @@ $result = mysql_query("SELECT * FROM `mail` WHERE `to`='admin'");
 $undread=mysql_query("SELECT count(`read`) AS unread FROM `mail` WHERE `to`='admin' AND `read`=0");
 $count=mysql_fetch_array($undread);
 $unreadcount=$count['unread'];
+$total=mysql_query("SELECT count(`subject`) AS feed FROM `feedback`");
+$feed_count=mysql_fetch_array($total);
+$feed_count=$feed_count['feed'];
 ?>

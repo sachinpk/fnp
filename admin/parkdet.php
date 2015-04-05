@@ -60,9 +60,9 @@ $result = mysql_query("select * from gm");
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
                         <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="recfed.php" class="dropdown-toggle">
                                 <i class="fa fa-tasks"></i>
-                                <span class="label label-danger">9</span>
+                                <span class="label label-danger"><?php echo $feed_count;?></span>
                             </a>
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
