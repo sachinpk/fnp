@@ -9,8 +9,7 @@ $subject=$_POST['subject'];
 $message=$_POST['message'];
 mysql_query("INSERT INTO `mail`(`from`, `to`, `subject`, `message`) VALUES ('admin','$to','$subject','$message')");
 
-// header("Location:admin.php");
-echo $to;
+header("Location:admin.php");
 }
 
 
