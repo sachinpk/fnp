@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2015 at 04:24 PM
+-- Generation Time: Apr 05, 2015 at 10:53 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -59,8 +59,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 
 INSERT INTO `feedback` (`no`, `name`, `subject`, `email`, `description`) VALUES
 (5, 'sachin999', '123ssss', 'sachinpray4me@gmail.com', 'sdddddddddddddddddddddddddddddddddddddd'),
-(7, 'sajan', 'send', 'nidhinpk@yahoo.co.in', 'hijjugki'),
-(8, 'sachin', 'sssssdddddd', 'sachinpray4me@gmail.com', 'sadasdasda');
+(7, 'sajan', 'send', 'nidhinpk@yahoo.co.in', 'hijjugki');
 
 -- --------------------------------------------------------
 
@@ -102,8 +101,22 @@ CREATE TABLE IF NOT EXISTS `mail` (
   `subject` varchar(500) NOT NULL,
   `message` varchar(5000) NOT NULL,
   `read` tinyint(1) NOT NULL DEFAULT '0',
+  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `mail`
+--
+
+INSERT INTO `mail` (`id`, `from`, `to`, `subject`, `message`, `read`, `time`) VALUES
+(1, 'admin', 'jeneesh@gmail.com', 'hai', 'koooi', 0, '2015-04-04 06:28:33'),
+(2, 'admin', 'aneesh@gmail.com', 'haiiiiii', 'sachinnnnn', 0, '2015-04-04 06:34:18'),
+(3, 'admin', 'ashwant@gmail.com', 'like', 'haiiii i like it', 0, '2015-04-05 08:49:33'),
+(4, 'admin', 'jeneesh@gmail.com', 'finish', 'haiiii i like it', 0, '2015-04-05 08:51:06'),
+(5, 'jeneesh@gmail.com', 'admin', 'hello', 'Myaccc', 0, '2015-04-05 08:54:45'),
+(6, 'aneesh@gmail.com', 'admin', 'check', 'How are you', 0, '2015-04-05 08:56:09'),
+(7, 'jethin@gmail.com', 'admin', 'iam', 'Fine', 1, '2015-04-05 08:56:43');
 
 -- --------------------------------------------------------
 
