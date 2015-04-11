@@ -3,6 +3,7 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 include("project connection.php");
 $id=$_REQUEST['no'];
 $result=mysql_query("SELECT * from mail where id='$id'");
+mysql_query("UPDATE `mail` SET `read`=1 WHERE `id`='$id'");
 $arr=mysql_fetch_array($result);
 $message= '<div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
